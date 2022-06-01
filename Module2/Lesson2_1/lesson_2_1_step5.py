@@ -8,7 +8,9 @@ def get_x(web_driver):
     return int(web_driver.find_element_by_id("input_value").text)
 
 
-# функция, используемая так же в шаге 7
+# функция, используемая так же в:
+# шаге 7 урока 1 модуля 2 (данный модуль)
+# шаге 6 урока 2 модуля 2
 def complete_form(page_address, x_function):
     browser = webdriver.Chrome()
 
@@ -24,8 +26,10 @@ def complete_form(page_address, x_function):
         if not robot_check_box.is_selected():
             robot_check_box.click()
         # button clicks
-        for element in ["#robotsRule", "button.btn[type='submit']"]:
-            browser.find_element_by_css_selector(element).click()
+        for selector in ["#robotsRule", "button.btn[type='submit']"]:
+            element = browser.find_element_by_css_selector(selector)
+            browser.execute_script("return arguments[0].scrollIntoView(true);", element)
+            element.click()
 
     finally:
         time.sleep(5)
