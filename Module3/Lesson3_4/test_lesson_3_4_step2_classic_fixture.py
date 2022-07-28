@@ -12,7 +12,7 @@ class TestMainPage1:
         cls.browser = webdriver.Chrome()
 
     @classmethod
-    def class_teardown_class(cls):
+    def teardown_class(cls):
         print("quit browser for test suite..")
         cls.browser.quit()
 
